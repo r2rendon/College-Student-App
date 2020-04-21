@@ -1,0 +1,41 @@
+<div>
+    <div class="row">
+      <img [src]="clase?.ImageUrl"/>
+      <div class="col-md-11">
+        <h2>{{clase?.name}} </h2>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-md-6">
+        <div><strong>Date:</strong> {{clase?.time}}</div>
+      </div>
+      <div class="col-md-6">
+        <div><strong>Clase #:</strong> {{clase?.id}}</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div><strong>Aula:</strong> {{clase?.location?.room}}</div>
+      </div>
+      <div class="col-md-6">
+        <div><strong>Campus:</strong> {{clase?.location?.campus}}</div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="col-md-2">
+        <h3 style="margin: 0;">Secciones</h3>
+      </div>
+      <div class="col-md-2">
+        <a class="a-button" (click)="AddSeccion()">Agregar Seccion</a>
+      </div>
+    </div>
+    
+    <seccion-lista *ngIf="!addMode" [secciones]="clase?.secciones"></seccion-lista>
+    <create-seccion *ngIf="addMode" (opCancelarClick)="fnMia()" (opGuardarClick)="fnGuardar($event)" ></create-seccion>
+    
+</div>

@@ -1,0 +1,22 @@
+<div>
+    <h1>Editar tu perfil </h1>
+    <hr>
+    <div class="col-md-4">
+      <form [formGroup]="perfilForm" autocomplete="off" (ngSubmit)="fnUpdate(perfilForm.value)" novalidate>
+        <div class="form-group" [ngClass]="{'error': NoValidFirstName()}" >
+          <label for="firstName">Nombre:</label>
+          <em *ngIf="NoValidFirstName() && perfilForm.controls.firstName?.errors.required">Este campo es requerido</em>
+          <em *ngIf="NoValidFirstName() && perfilForm.controls.firstName?.errors.pattern">No se aceptan numero en nombre</em>
+          <input formControlName="firstName" id="firstName" type="text" class="form-control" placeholder="Nombre..." />
+        </div>
+        <div class="form-group" [ngClass]="{'error': NoValidLastName()}">
+          <label for="lastName">Apellido:</label>
+          <em *ngIf="NoValidLastName() && perfilForm.controls.lastName?.errors.required">Este campo es requerido</em>
+          <input formControlName="lastName" id="lastName" type="text" class="form-control" placeholder="Apellido..." />
+        </div>
+  
+        <button type="submit" class="btn btn-primary">Actualizar</button>
+        <button type="button" class="btn btn-default">Cancelar</button>
+      </form>
+    </div>
+  </div>

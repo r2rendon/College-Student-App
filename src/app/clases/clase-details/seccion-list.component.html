@@ -1,0 +1,9 @@
+<div class="row" *ngFor="let seccion of secciones">
+  <div class="col-md-10">
+      <collapsible-well [title]="seccion?.name">
+        <h6>{{seccion?.profesor}}</h6>
+        <span>Duración: {{seccion?.duracion}}</span><br />
+        <p>{{seccion?.descripcion}}</p>
+      </collapsible-well>
+  </div>
+</div>

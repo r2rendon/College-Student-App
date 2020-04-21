@@ -1,0 +1,92 @@
+<h1>Login</h1>
+<hr>
+<div class="row">
+<div class="col-md-4">
+  <form autocomplete="off" #MiloginForm="ngForm" (ngSubmit)="fnLogin(MiloginForm.value)">
+    <div class="form-group" >
+      <label for="userName">Nombre de Usuario:</label>
+      <em *ngIf="MiloginForm.controls.userName?.invalid && 
+      (MiloginForm.controls.userName?.touched || mouseoverlogin)">Este campo es requerido</em>
+      <input (ngModel)="userName" name="userName" id="userName" type="text" class="form-control" required placeholder="User Name..." />
+    </div>
+    <div class="form-group" >
+      <label for="password">Contraseña:</label>
+      <em *ngIf="MiloginForm.controls.password?.invalid && 
+      (MiloginForm.controls.password?.touched || mouseoverlogin)">Este campo es requerido</em>
+      <input (ngModel)="password" name="password" id="password" type="password" class="form-control" required placeholder="Password..." />
+    </div>
+        
+    <span (mouseenter)="mouseoverlogin=true" (mouseleave)="mouseoverlogin=false">
+      <button type="submit" class="btn btn-primary" [disabled]="MiloginForm.invalid" >Entrar</button>
+    </span>
+    <button type="button" class="btn btn-default" (click)="fnCancel()">Cancelar</button>
+  </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="col-md-2" style="margin-right:30px; color: aliceblue;"> 
+        MiloginForm.controls.userName?.valid
+  <br/> MiloginForm.controls.userName?.invalid
+  <br/> MiloginForm.controls.userName?.dirty
+  <br/> MiloginForm.controls.userName?.pristine
+  <br/> MiloginForm.controls.userName?.touched
+  <br/> MiloginForm.controls.userName?.untouched
+  <br/>
+  <br/>
+  <br/> MiloginForm.controls.password?.valid
+  <br/> MiloginForm.controls.password?.invalid
+  <br/> MiloginForm.controls.password?.dirty
+  <br/> MiloginForm.controls.password?.pristine
+  <br/> MiloginForm.controls.password?.touched
+  <br/> MiloginForm.controls.password?.untouched
+  <br/>
+  <br/>
+  <br/> MiloginForm?.valid
+  <br/> MiloginForm?.invalid
+  <br/> MiloginForm?.dirty
+  <br/> MiloginForm?.pristine
+  <br/> MiloginForm?.touched
+  <br/> MiloginForm?.untouched
+  <br/> MiloginForm?.submitted
+  <br/>
+</div>
+<div class="col-md-2" style="margin-left:120px; color: aliceblue;"> 
+        {{MiloginForm.controls.userName?.valid}}
+  <br/> {{MiloginForm.controls.userName?.invalid}}
+  <br/> {{MiloginForm.controls.userName?.dirty}}
+  <br/> {{MiloginForm.controls.userName?.pristine}}
+  <br/> {{MiloginForm.controls.userName?.touched}}
+  <br/> {{MiloginForm.controls.userName?.untouched}}
+  <br/>
+  <br/>
+  <br/> {{MiloginForm.controls.password?.valid}}
+  <br/> {{MiloginForm.controls.password?.invalid}}
+  <br/> {{MiloginForm.controls.password?.dirty}}
+  <br/> {{MiloginForm.controls.password?.pristine}}
+  <br/> {{MiloginForm.controls.password?.touched}}
+  <br/> {{MiloginForm.controls.password?.untouched}}
+  <br/>
+  <br/>
+  <br/> {{MiloginForm?.valid}}
+  <br/> {{MiloginForm?.invalid}}
+  <br/> {{MiloginForm?.dirty}}
+  <br/> {{MiloginForm?.pristine}}
+  <br/> {{MiloginForm?.touched}}
+  <br/> {{MiloginForm?.untouched}}
+  <br/> {{MiloginForm?.submitted}}
+  <br/>
+</div>
+</div>
+

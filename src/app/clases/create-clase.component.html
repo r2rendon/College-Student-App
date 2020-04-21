@@ -1,0 +1,40 @@
+<h1>Nueva Clase</h1>
+<hr>
+<div class="col-md-6">
+
+  <form #claseForm="ngForm" (ngSubmit)="saveClase(claseForm.value)" autocomplete="off" novalidate>
+
+    <div class="form-group" [ngClass]="{'error': claseForm.controls.name?.invalid && claseForm.controls.name?.touched}">
+      <label for="ClaseName">Nombre de la Clase:</label>
+      <em *ngIf="claseForm.controls.name?.invalid && (claseForm.controls.name?.touched)">Requerido</em>
+      <input [(ngModel)]="claseObj.name" name="name" required id="name" type="text" class="form-control" placeholder="nombre de la clase..." />
+    </div>
+
+    <div class="form-group" [ngClass]="{'error': claseForm.controls.time?.invalid && claseForm.controls.time?.touched}">
+      <label for="ClaseTime">Hora de la clase:</label>
+      <em *ngIf="claseForm.controls.time?.invalid && (claseForm.controls.time?.touched)">Requerido</em>
+      <input [(ngModel)]="claseObj.time" name="time" required id="ClaseTime" type="text" class="form-control" placeholder="hora de inicio..." />
+    </div>
+    
+    <div class="row" ngModelGroup="location">
+        <div class="col-md-6">
+            <input [(ngModel)]="claseObj.location.room" name="room" id="room" type="text" class="form-control" placeholder="Aula..." />
+        </div>
+        <div class="col-md-6" >
+            <input [(ngModel)]="claseObj.location.campus" name="campus" id="campus" type="text" class="form-control" placeholder="campus..." />
+        </div>
+    </div>
+    
+    <div class="form-group" [ngClass]="{'error': claseForm.controls.ImageUrl?.invalid && claseForm.controls.ImageUrl?.touched}">
+      <label for="ImageUrl">Image:</label>
+      <em *ngIf="claseForm.controls.ImageUrl?.invalid && claseForm.controls.ImageUrl?.touched && claseForm.controls.ImageUrl?.errors.required">Requerido</em>
+      <em *ngIf="claseForm.controls.ImageUrl?.invalid && claseForm.controls.ImageUrl?.touched  && claseForm.controls.ImageUrl?.errors.pattern">Debe ser una png or jpg url</em>
+      <input [(ngModel)]="claseObj.ImageUrl" name="ImageUrl" required pattern=".*\/.*.(png|jpg)" id="ImageUrl" type="text" class="form-control" placeholder="URL de la imagen..." />
+      <img [src]="claseForm.controls.ImageUrl.value" *ngIf="claseForm.controls.ImageUrl?.valid" />
+    </div>
+    
+    <button type="submit" [disabled]="claseForm.invalid" class="btn btn-primary">Guardar</button>
+    <button type="button" class="btn btn-default" (click)="cancel()">Cancelar</button>
+
+  </form>
+</div>

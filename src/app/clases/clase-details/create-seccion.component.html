@@ -1,0 +1,37 @@
+<div class="col-md-12">
+    <h3>Crear Seccion</h3>
+  </div>
+  <div class="col-md-6">
+    <form [formGroup]="seccionForm" autocomplete="off" (ngSubmit)="fnSave(seccionForm.value)">
+      <div class="form-group" [ngClass]="{'error': name.invalid && name.dirty}">
+        <label for="name">Seccion Name:</label>
+        <em *ngIf="name.invalid && name.dirty && name?.errors.required">Este campo es requerido</em>
+        <input formControlName="name" id="name" type="text" class="form-control" placeholder="Nombre o Alias..." />
+      </div>
+      <div class="form-group" [ngClass]="{'error': profesor.invalid && profesor.dirty}">
+        <label for="profesor">Profesor:</label>
+        <em *ngIf="profesor.invalid && profesor.dirty && profesor?.errors.required">Este campo es requerido</em>
+        <input formControlName="profesor" id="profesor" type="text" class="form-control" placeholder="Profesor..." />
+      </div>
+      <div class="form-group" [ngClass]="{'error': duracion.invalid && duracion.dirty}">
+        <label for="duracion">Duracion:</label>
+        <em *ngIf="duracion.invalid && duracion.dirty && duracion?.errors.required">Este campo es requerido</em>
+        <select formControlName="duracion" class="form-control">
+          <option value="">seleccione la duracion...</option>
+          <option value="1">30 mins</option>
+          <option value="2">1 Hora</option>
+          <option value="3">Medio dia</option>
+          <option value="4">Todo el dia</option>
+        </select>
+      </div>
+      <div class="form-group" [ngClass]="{'error': descripcion.invalid && descripcion.dirty}">
+        <label for="descripcion">Descripcion:</label>
+        <em *ngIf="descripcion.invalid && descripcion.dirty && descripcion?.errors.required">Este campo es requerido</em>
+        <em *ngIf="descripcion.invalid && descripcion.dirty && descripcion?.errors.maxlength">No debe ser mayor a 10 caracteres</em>
+        <!--<em *ngIf="descripcion.invalid && descripcion.dirty && descripcion?.errors.palabrasNoValidas">Palabra no valida: {{descripcion?.errors.palabrasNoValidas}}</em>-->
+        <textarea formControlName="descripcion" id="Descripcion" rows=3 class="form-control" placeholder="Descripcion..."></textarea>
+      </div>
+      <button type="submit" [disabled]="seccionForm.invalid" class="btn btn-primary">Guardar</button>
+      <button type="button" class="btn btn-default" (click)="fnCancelar()">Cancelar</button>
+    </form>
+  </div>
